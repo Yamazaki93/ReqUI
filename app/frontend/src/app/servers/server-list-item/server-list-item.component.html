@@ -1,10 +1,10 @@
-<div class="p-2 relative flex items-center raised-1 hover:bg-gray-900 cursor-pointer" (click)="connect()">
-  <div class="flex-shrink-0 mr-2">
+<div class="py-2 relative flex items-center raised-1 hover:bg-gray-900 cursor-pointer" (click)="connect()">
+  <div class="flex-shrink-0 mx-4">
     <h1 class="text-xl" [class.text-warning]="!cfg.Secured" [class.text-success]="cfg.Secured">
       <i [class.ion-md-unlock]="!cfg.Secured" [class.ion-md-lock]="cfg.Secured"></i>
     </h1>
   </div>
-  <div class="flex flex-col flex-shrink mr-1 min-w-0 w-full">
+  <div class="flex flex-col flex-shrink min-w-0 w-full">
     <h1 class="text-base truncate mr-3">{{cfg.Server}}</h1>
     <h3 class="text-xs text-gray-500 truncate">
       {{cfg.FullURL}}
@@ -13,7 +13,7 @@
   <div class="cursor-pointer hover:text-danger p-2 flex-shrink-0" title="Delete server" (click)="delete($event)">
     <h1 class="text-2xl"><i class="ion-md-trash"></i></h1>
   </div>
-  <div class="cursor-pointer hover:text-primary p-2 flex-shrink-0" title="Open new connection" (click)="createNewConnection($event)">
+  <div class="cursor-pointer hover:text-primary p-2 flex-shrink-0 mr-2" title="Open new connection" (click)="createNewConnection($event)">
     <h1 class="text-2xl"><i class="ion-md-open"></i></h1>
   </div>
 </div>
