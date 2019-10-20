@@ -1,12 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, transition, animate, keyframes, style, query } from '@angular/animations';
 import { ServersService } from '../servers.service';
 import { SubscriptionComponent } from 'src/app/helpers/subscription-component';
 import { ElectronService } from 'src/app/messaging/electron.service';
-import { AddOrUpdateConfigCommand } from '../../../../../servers/messages';
-import * as uuid from 'uuid';
 import { IServerConfig } from '../../../../../servers/i-server-config';
-import { WebSocketServerConfigMemento } from '../../../../../websocket-servers/i-websocket-server-config';
+import { WorkspaceService } from 'src/app/workspace/workspace.service';
+import { SettingsPageComponent } from 'src/app/settings/settings-page/settings-page.component';
 
 @Component({
   selector: 'app-server-list',
@@ -31,7 +30,8 @@ export class ServerListComponent extends SubscriptionComponent implements OnInit
 
   constructor(
     private servers: ServersService,
-    private electron: ElectronService
+    private electron: ElectronService,
+    private workspace: WorkspaceService
   ) {
     super();
     this.recordSubscription(servers.Servers.subscribe(s => {
@@ -45,5 +45,9 @@ export class ServerListComponent extends SubscriptionComponent implements OnInit
 
   private cancelAdd() {
     this.adding = false;
+  }
+  private openSettings() {
+    let t = this.workspace.OpenNewTab(SettingsPageComponent);
+    this.workspace.SetTabTitle(t.id, 'Settings');
   }
 }

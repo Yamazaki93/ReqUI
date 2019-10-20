@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { WorkspaceModule } from '../workspace/workspace.module';
 import { ControlsModule } from '../controls/controls.module';
 import { WebsocketServersModule } from '../websocket-servers/websocket-servers.module';
+import { SettingsModule } from '../settings/settings.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { WebsocketServersModule } from '../websocket-servers/websocket-servers.m
     FormsModule,
     ControlsModule,
     WorkspaceModule,
+    SettingsModule,
     WebsocketServersModule
   ],
   providers: [

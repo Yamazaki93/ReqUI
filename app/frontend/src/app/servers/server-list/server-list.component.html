@@ -3,8 +3,11 @@
     <div class="min-w-0 flex-shrink w-full">
       <h1 class="text-xl">Servers</h1>
     </div>
-    <div class="cursor-pointer hover:text-primary p-1" (click)="adding = true;" title="Add new server">
+    <div class="cursor-pointer hover:text-primary p-1 mr-2" (click)="adding = true;" title="Add new server">
       <h1 class="text-2xl flex align-center"><i class="ion-md-add flex"></i></h1>
+    </div>
+    <div class="cursor-pointer hover:text-primary p-1" (click)="openSettings()" title="Settings">
+      <h1 class="text-2xl flex align-center"><i class="ion-md-settings flex"></i></h1>
     </div>
   </div>
   <div class="flex-shrink-0 p-3 raised-2" *ngIf="adding">

@@ -46,6 +46,8 @@ export class ServersService {
       if (opened) {
         let cfg = this.servers.value.find(_ => _.ID === opened.configID);
         this.currentServerType.next(cfg.GetMemento().TypeID);
+      } else {
+        this.currentServerType.next('');
       }
     });
   }

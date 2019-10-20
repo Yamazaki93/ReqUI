@@ -22,6 +22,7 @@ import { RequestRepository } from "./requests/request-repository";
 import { RequestRepositoryMessagingAdapter } from "./requests/request-repository-messaging-adapter";
 import { IMessenger } from "./messaging/i-messenger";
 import { LoadRequestsCommand } from "./requests/messages";
+import { UpdaterService } from "./updater/updater";
 let homeDir = os.homedir();
 let appDir = homeDir + "/ReqUI/";
 let mainWindow: BrowserWindow;
@@ -140,6 +141,7 @@ function initializeComponents() {
     initializePersistence();
     initializeServers(messenger, logger, persistence);
     initializeRequests(messenger, logger, persistence);
+    initializeUpdater(messenger);
 }
 
 function initializeMessaging(log: ILogger) {
@@ -177,4 +179,8 @@ function registerApplicationMessages() {
         messenger.Send(new LoadServerRepositoryCommand());
         messenger.Send(new LoadRequestsCommand());
     });
+}
+
+function initializeUpdater(message: IMessenger) {
+    let updater = new UpdaterService(message);
 }
