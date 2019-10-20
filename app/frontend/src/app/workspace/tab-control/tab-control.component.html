@@ -1,0 +1,5 @@
+<div class="w-full container">
+  <div class="flex flex-row items-start overflow-y-auto border-black">
+    <app-tab-item *ngFor="let t of tabs" [current]="isCurrent(t)" [id]="t.id" [title]="t.title"></app-tab-item>
+  </div>
+</div>

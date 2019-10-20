@@ -1,0 +1,37 @@
+<form class="w-full">
+  <div class="flex">
+    <div class="w-1/4 mr-2">
+      <label class="block uppercase tracking-wide text-gray-400 text-xs mb-1" for="grid-first-name">
+        Protocol
+      </label>
+      <div class="relative">
+        <select [(ngModel)]="protocol" name="protocol"
+          class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-1 px-2 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          id="grid-state">
+          <option value="s">wss://</option>
+          <option value="u">ws://</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+        </div>
+      </div>
+    </div>
+    <div class="w-3/4">
+      <label class="block uppercase tracking-wide text-gray-400 text-xs mb-1" for="grid-zip">
+        Path
+      </label>
+      <input [(ngModel)]="serverPath" name="serverPath" #newServerPathInput (keyup)="onKeyPressInput($event)"
+        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        id="grid-zip" type="text" placeholder="socket.com">
+    </div>
+  </div>
+  <div class="flex mt-2 justify-end">
+    <button class="btn btn-danger mr-2" type="button" (click)="cancelAdd()">
+      Close
+    </button>
+    <button class="btn btn-primary" type="button" (click)="commitAdd()">
+      Add
+    </button>
+  </div>
+</form>

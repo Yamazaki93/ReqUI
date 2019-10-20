@@ -1,0 +1,30 @@
+<div class="w-full flex flex-col">
+  <div class="w-full flex cursor-pointer flex-shrink-0 pl-2 hover:text-primary" (click)="expandOrLoad($event)"
+  (dblclick)="send($event)"
+    [class.text-gray-700]="!canSendRequest() && hasRequest()">
+    <h1 class="text-xl mr-2 flex-shrink-0" *ngIf="data.children.length">
+      <i [class.ion-md-folder]="!data.expanded" [class.ion-md-folder-open]="data.expanded"></i>
+    </h1>
+    <h1 class="text-xl mr-2 flex-shrink-0" *ngIf="hasRequest()">
+      <i class="ion-md-cube"></i>
+    </h1>
+    <h1 class="text-lg flex-shrink min-w-0 w-full">
+      {{data.name}}
+    </h1>
+    <h1 class="text-lg flex-shrink-0 hover:text-danger mr-2" title="Delete request/sub requests" (click)="delete($event)">
+      <i class="ion-md-trash"></i>
+    </h1>
+    <h1 class="text-lg flex-shrink-0 hover:text-success mr-2" title="Load request" *ngIf="canSendRequest()" (click)="load($event)">
+      <i class="ion-md-return-right"></i>
+    </h1>
+    <h1 class="text-lg flex-shrink-0 hover:text-success mr-2" title="Send request" *ngIf="canSendRequest()" (click)="send($event)">
+      <i class="ion-md-send"></i>
+    </h1>
+    <h1 class="text-lg cursor-no flex-shrink-0 text-danger mr-2" *ngIf="!canSendRequest() && hasRequest()">
+      <i class="ion-md-remove-circle-outline"></i>
+    </h1>
+  </div>
+  <div class="flex-shirink min-h-0 pl-2" *ngIf="data.expanded">
+    <app-request-list-node *ngFor="let c of data.children | nodeFilter:currentType:hideIncompatible" [data]="c"></app-request-list-node>
+  </div>
+</div>

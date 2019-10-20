@@ -1,0 +1,21 @@
+@tailwind base; /* Preflight will be injected here */
+
+@tailwind components;
+
+.btn {
+    @apply outline-none py-1 px-2 rounded;
+}
+.btn-danger {
+    @apply bg-danger text-white;
+}
+.btn-danger:hover {
+    @apply bg-red-800;
+}
+.btn-primary {
+    @apply bg-primary text-white;
+}
+.btn-primary:hover {
+    @apply bg-blue-800;
+}
+
+@tailwind utilities;

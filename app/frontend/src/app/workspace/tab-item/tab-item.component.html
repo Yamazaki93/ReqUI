@@ -1,0 +1,14 @@
+<div class="py-1 px-2 border-r border-black text-white cursor-pointer hover:bg-gray-900
+            flex flex-row text-lg items-center" [class.bg-gray-800]="current" [class.raised-6]="!current"
+  (click)="select()">
+  <div class="mr-2 rounded-full h-3 w-3 shadow-lg" *ngIf="status !== TabStatus.None && status !== TabStatus.Busy"
+    [class.bg-primary]="status === TabStatus.Notify" [class.bg-warning]="status === TabStatus.Warning"
+    [class.bg-danger]="status === TabStatus.Danger" [class.flash-in-out]="status === TabStatus.Notify"
+    [class.bg-gray-500]="status === TabStatus.Muted"  [class.bg-success]="status === TabStatus.Normal">
+  </div>
+  <div class="mr-2" *ngIf="status === TabStatus.Busy">
+    <app-spinner [size]="16"></app-spinner>
+  </div>
+  <p class="mr-3">{{title}}</p>
+  <p class="hover:text-primary" (click)="close()"><i class="ion-md-close"></i></p>
+</div>

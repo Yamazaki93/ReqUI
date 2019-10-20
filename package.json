@@ -1,0 +1,111 @@
+{
+  "name": "req-ui",
+  "version": "0.1.0",
+  "description": "A websocket UI",
+  "displayName": "ReqUI",
+  "author": {
+    "name": "Michael Lu",
+    "email": "michaellu@rhodiumcode.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yamazaki93/ReqUI"
+  },
+  "main": "./dist/main.js",
+  "scripts": {
+    "build": "tsc --inlineSourceMap false",
+    "build-prod": "tsc --inlineSourceMap false --sourceMap false",
+    "watch": "tsc -w",
+    "build-tests": "rimraf app/tests/dist && tsc -p app/tests",
+    "test": "npm run build && npm run build-tests && mocha --timeout 20000 \"./app/tests/dist/**/*.js\"",
+    "test:unit": "npm run build && npm run build-tests && mocha --timeout 20000 \"./app/tests/dist/tests/unit/*.js\"",
+    "test:ci": "npm run build && npm run build-tests && mocha --reporter mocha-jenkins-reporter --timeout 20000 \"./app/tests/dist/tests/unit/**/*.js\"",
+    "test:all": "npm run build && npm run build-tests && mocha -R mocha-jenkins-reporter --timeout 20000 \"./app/tests/dist/**/*.js\"",
+    "test:one": "npm run build && npm run build-tests && mocha --watch -u bdd \"./app/tests/dist/**/*.js\"",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "start": "npm run build && electron ./dist/main.js",
+    "postinstall": "electron-builder install-app-deps",
+    "dist": "npm run build && electron-builder --publish never"
+  },
+  "build": {
+    "generateUpdatesFilesForAllChannels": true,
+    "appId": "com.rhodiumcode.req-ui",
+    "productName": "ReqUI",
+    "files": [
+      "**/*",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!**/node_modules/*.d.ts",
+      "!**/node_modules/.bin",
+      "!**/*.{iml,o,hprof,orig,pyc,pyo,rbc,swp,csproj,sln,xproj}",
+      "!.editorconfig",
+      "!**/._*",
+      "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,.gitignore,.gitattributes}",
+      "!**/{__pycache__,thumbs.db,.flowconfig,.idea,.vs,.nyc_output}",
+      "!**/{appveyor.yml,.travis.yml,circle.yml}",
+      "!**/{npm-debug.log,yarn.lock,.yarn-integrity,.yarn-metadata.json}",
+      "!dist-electron",
+      "!app",
+      "!*.json",
+      "!build.ps1",
+      "!README.md",
+      "!yarn.lock",
+      "!Jenkinsfile",
+      "!misc",
+      "!.vscode"
+    ],
+    "directories": {
+      "buildResources": "build",
+      "output": "dist-electron"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg"
+        },
+        {
+          "target": "zip"
+        }
+      ],
+      "icon": "build/icon.icns",
+      "category": "public.app-category.productivity"
+    },
+    "publish": {
+      "provider": "github"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "extends": null
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.5",
+    "@types/rimraf": "^2.0.2",
+    "@types/sinon": "^7.0.8",
+    "@types/socket.io": "^2.1.2",
+    "@types/uuid": "^3.4.4",
+    "@types/ws": "^6.0.1",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "electron": "4.0.3",
+    "electron-builder": "^20.39.0",
+    "electron-chromedriver": "^4.0.0-beta.1",
+    "mocha": "^6.0.2",
+    "mocha-jenkins-reporter": "^0.4.1",
+    "rimraf": "^2.6.2",
+    "spectron": "^5.0.0",
+    "tslint": "^5.10.0",
+    "typescript": "^3.1.6"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "electron-log": "^3.0.1",
+    "electron-updater": "^4.0.0",
+    "opn": "^6.0.0",
+    "rxjs": "^6.5.2",
+    "uuid": "^3.3.2",
+    "ws": "^6.2.1"
+  }
+}

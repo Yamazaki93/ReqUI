@@ -1,0 +1,16 @@
+<div class="w-full text-white flex flex-col">
+  <div class="flex-shrink-0 raised-4 px-3 py-1 rounded rounded-b-none w-full flex">
+    <div class="min-w-0 flex-shrink w-full">
+      <h1 class="text-xl">Servers</h1>
+    </div>
+    <div class="cursor-pointer hover:text-primary p-1" (click)="adding = true;" title="Add new server">
+      <h1 class="text-2xl flex align-center"><i class="ion-md-add flex"></i></h1>
+    </div>
+  </div>
+  <div class="flex-shrink-0 p-3 raised-2" *ngIf="adding">
+    <app-websocket-server-config (Closing)="cancelAdd()"></app-websocket-server-config>
+  </div>
+  <div class="flex-shrink h-full min-h-0 w-full">
+    <app-server-list-item *ngFor="let c of cfgs" [cfg]="c"></app-server-list-item>
+  </div>
+</div>
