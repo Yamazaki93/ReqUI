@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { SettingsPageComponent } from './settings-page/settings-page.component';
 import { FormsModule } from '@angular/forms';
 import { WorkspaceModule } from '../workspace/workspace.module';
+import { ControlsModule } from '../controls/controls.module';
+import { UpdaterModule } from '../updater/updater.module';
 
 @NgModule({
   declarations: [SettingsPageComponent],
@@ -11,7 +13,9 @@ import { WorkspaceModule } from '../workspace/workspace.module';
   imports: [
     CommonModule,
     FormsModule,
-    WorkspaceModule
+    WorkspaceModule,
+    UpdaterModule,
+    ControlsModule
   ]
 })
 export class SettingsModule { }

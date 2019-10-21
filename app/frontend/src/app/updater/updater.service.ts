@@ -40,7 +40,7 @@ export class UpdaterService {
           that.electron.Send(new UpdaterCommand('commence-install-update'));
         }, 7 * 1000);
       } else if (evt.Event === 'checking') {
-        if (evt.Arg.inProgress) {
+        if (evt.Arg) {
           this.statusSubject.next(UpdaterStatus.CheckingUpdate);
         }
       }

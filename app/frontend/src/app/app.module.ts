@@ -9,6 +9,8 @@ import { ServersModule } from './servers/servers.module';
 import { WorkspaceModule } from './workspace/workspace.module';
 import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
 import { RequestsModule } from './requests/requests.module';
+import { UpdaterModule } from './updater/updater.module';
+import { SettingsModule } from './settings/settings.module';
 
 
 @NgModule({
@@ -20,11 +22,13 @@ import { RequestsModule } from './requests/requests.module';
     CommonModule,
     BrowserAnimationsModule,
     MonacoEditorModule,
+    UpdaterModule,
     MessagingModule,
     ControlsModule,
     ServersModule,
     WorkspaceModule,
-    RequestsModule
+    RequestsModule,
+    SettingsModule
   ],
   providers: [
   ],
