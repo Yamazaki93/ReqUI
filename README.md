@@ -1,6 +1,13 @@
 # ReqUI
 
-A simple websocket UI client
+![alt text](https://github.com/Yamazaki93/ReqUI/raw/master/ReqUI.gif "Preview")
+
+  An open-source, minimalist websocket UI client.
+
+## Highlight
+
+ - Simple to use workflow with server and request saving
+ - Manage multiple connections
 
 ## License 
 
